@@ -32,6 +32,7 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 			array[j] = array[i];
 			array[i] = temp;
 			i++;
+			j--;
 			print_array(array, size);
 		}
 	}
