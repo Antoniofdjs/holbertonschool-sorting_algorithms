@@ -12,29 +12,12 @@
  */
 size_t partition(int *array, size_t low, size_t high, size_t size)
 {
-
-
-
 	int temp, pivot;
 	size_t i, j, idx_pivot = low;
 
 	pivot = array[low];
 	i = low;
 	j = high;
-
-	/*
-	 * using this example with i and j
-	 * [8,2,7,1,15,9]
-
-	 * and high is array[size - 1] = 9
-	 * i will look for numbers greater than pivot = 8
-
-	 *  i     j
-	 * the swapp and continue until i > j
-
-	 * [1,2,7,8,13,9]
-	 *        p
-	 */
 
 	while (i < j)
 	{
@@ -64,7 +47,7 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 
 
 /**
- * quick_sort_recursive - Recursive function for quick sort.
+ * quick_sort_recursion - Recursive function for quick sort.
  *
  * @array: The array to be sorted.
  * @low: The low index of the partition.
@@ -100,5 +83,5 @@ void quick_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	quick_sort_recursion(array, 0, size - 1 , size);
+	quick_sort_recursion(array, 0, size - 1, size);
 }
