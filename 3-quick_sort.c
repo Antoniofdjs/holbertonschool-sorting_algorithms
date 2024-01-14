@@ -3,7 +3,7 @@
 
 
 /**
-
+ * partition - method of sorting to find partition quick sort
  * @array: Array to be sorted.
  * @low: Low index of the partition.
  * @high: high index of aray
@@ -38,9 +38,6 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 
 	while (i < j)
 	{
-		while (array[i] < pivot && i < high)
-			i++;
-
 		while (array[j] >= pivot && j > low)
 			j--;
 
@@ -51,12 +48,11 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 			temp = array[j];
 			array[j] = array[i];
 			array[i] = temp;
-			j--;
 			i++;
 			print_array(array, size);
 		}
 	}
-	if (idx_pivot != i)
+	if (idx_pivot != i && i != j)
 	{
 		temp = array[i];
 		array[i] = array[idx_pivot];
