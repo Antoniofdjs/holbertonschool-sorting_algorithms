@@ -24,7 +24,7 @@ void selection_sort(int *array, size_t size)
 				index_min = j; /* remember index we found min */
 			}
 		}
-		if (index_swap != i) /* if no new min found, indx_min = i, wont execute */
+		if (index_min != i) /* if no new min found, indx_min = i, wont execute */
 		{
 			array[index_min] = array[i]; /* switch value where indx min was found*/
 			array[i] = min; /* min set to lowest position in array available */
