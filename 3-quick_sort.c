@@ -10,39 +10,32 @@
  * @size: size of array
  * Return: Return the index of the pivot after partitioning.
  */
-size_t partition(int *array, size_t low, size_t high, size_t size)
+size_t partition(int *array, int low, int high, size_t size)
 {
 	int temp, pivot;
-	size_t i, j, idx_pivot = low;
+	int i, j;
 
-	pivot = array[low];
+	pivot = array[high];
 	i = low;
-	j = high;
 
-	while (i < j)
+	for (j = low; j < high; j++)
 	{
-		while (array[j] >= pivot && j > low)
-			j--;
-
-		if (i < j)
+		if (array[j] <= pivot)
 		{
-			if (array[i] == pivot)
-				idx_pivot = j;
 			temp = array[j];
 			array[j] = array[i];
 			array[i] = temp;
+			if (i != j)
+				print_array(array, size);
 			i++;
-			j--;
-			print_array(array, size);
 		}
 	}
-	if (idx_pivot != i && i != j)
-	{
-		temp = array[i];
-		array[i] = array[idx_pivot];
-		array[idx_pivot] = temp;
+
+	temp = array[i];
+	array[i] = array[high];
+	array[high] = temp;
+	if (i != j)
 		print_array(array, size);
-	}
 	return (i);
 }
 
@@ -58,14 +51,14 @@ size_t partition(int *array, size_t low, size_t high, size_t size)
 
 
 
-void quick_sort_recursion(int *array, size_t low, size_t high, size_t size)
+void quick_sort_recursion(int *array, int low, int high, size_t size)
 {
 	size_t pivot_index;
 
 	if (low < high)
 	{
 		pivot_index = partition(array, low, high, size);
-		quick_sort_recursion(array, low, pivot_index, size);
+		quick_sort_recursion(array, low, pivot_index - 1, size);
 		quick_sort_recursion(array, pivot_index + 1, high, size);
 	}
 }
